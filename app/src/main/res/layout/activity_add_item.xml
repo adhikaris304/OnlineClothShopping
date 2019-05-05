@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddItemActivity"
+
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+    <ImageView android:src="@drawable/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+         />
+</LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/background"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="vertical"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp">
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Item Name"
+            android:textSize="25sp"
+            android:id="@+id/etItemName"
+            android:drawablePadding="8dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#f9d7db"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Item Price"
+            android:textSize="25sp"
+            android:id="@+id/etItemPrice"
+            android:background="@android:color/transparent"
+            android:drawablePadding="8dp"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#f9d7db"            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Image Name"
+            android:textSize="25sp"
+            android:id="@+id/etItemImage"
+            android:background="@android:color/transparent"
+            android:drawablePadding="8dp"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#f9d7db"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Item Description"
+            android:textSize="25sp"
+            android:id="@+id/etItemDesc"
+            android:background="@android:color/transparent"
+            android:drawablePadding="8dp"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#f9d7db"
+            />
+        <Button
+            android:id="@+id/btnAddItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Add Item"
+            android:layout_marginTop="20dp"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            />
+
+        <Button
+            android:id="@+id/btnback"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="right"
+            android:gravity="bottom"
+            android:background="@drawable/backbutton"/>
+    </LinearLayout>
+
+
+</LinearLayout>
