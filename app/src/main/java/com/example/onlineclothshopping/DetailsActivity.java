@@ -1,9 +1,14 @@
 package com.example.onlineclothshopping;
 
+import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.InputStream;
+import java.net.URL;
 
 import static com.example.onlineclothshopping.R.layout.activity_details;
 
@@ -24,8 +29,21 @@ public class DetailsActivity extends AppCompatActivity {
         if (bundle!=null) {
             itemname.setText(bundle.getString("itemname"));
             itemprice.setText(bundle.getString("itemprice"));
-            itemimg.setImageResource(Integer.parseInt(bundle.getString("itemimage")));
             itemdesc.setText(bundle.getString("itemdesc"));
+
+            String image=bundle.getString("itemimage");
+            StrictMode();
+
+            try {
+                URL url=new URL(image);
+                itemimg.setImageBitmap(BitmapFactory.decodeStream((InputStream)url.getContent()));
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+    }
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 }

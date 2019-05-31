@@ -30,17 +30,13 @@ public interface ClothesApi  {
     @POST("items")
     Call<Void> addItems(@Body Clothes clothes);
 
-    @FormUrlEncoded
-    @POST("items")
-    Call<Void> addFieldItems (@Field("itemname") String itemName, @Field("itemprice") String itemPrice, @Field("itemimageName") String itemImageName, @Field("itemdesc") String itemDescription);
 
     @Multipart
     @POST("upload")
     Call<ImageResponse> uploadImage(@Part MultipartBody.Part img);
 
     @GET("users")
-    Call<List<Users>> getUsers();
+     Call<List<Users>> getUsers();
 
-    @POST("users")
-    Call<Void> addUser(@Body Users users);
+
 }

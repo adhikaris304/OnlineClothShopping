@@ -16,6 +16,17 @@ import android.widget.Toast;
 
 import com.example.onlineclothshopping.DashboardActivity;
 import com.example.onlineclothshopping.R;
+import com.example.onlineclothshopping.api.ClothesApi;
+import com.example.onlineclothshopping.model.Users;
+import com.example.onlineclothshopping.url.Url;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
     private Button btnLogin;
@@ -49,22 +60,29 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     }
     private void checkLogin(){
-        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-        String username=sharedPreferences.getString("username","");
-        String password=sharedPreferences.getString("password","");
+        ClothesApi clothesApi= Url.getInstance().create(ClothesApi.class);
+        Call<List<Users>> ListCall = clothesApi.getUsers();
+        ListCall.enqueue(new Callback<List<Users>>() {
+            @Override
+            public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+                List<Users> usersList = response.body();
+                for(Users users:usersList){
+                    if(etUsername_Login.getText().toString().equals(users.getUsername()) && etPassword_Login.getText().toString().equals(users.getPassword())){
+                        //Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();
+                        Intent intent= new Intent(getActivity().getApplicationContext(), DashboardActivity.class);
+                        startActivity(intent);
 
-        String uname=etUsername_Login.getText().toString();
-        String pass=etPassword_Login.getText().toString();
-        if(username.equals(uname) && password.equals(pass)){
-            //Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();
-            Intent intent= new Intent(getActivity().getApplicationContext(), DashboardActivity.class);
-            startActivity(intent);
+                    }
+                }
+            }
 
-        }
-        else{
-            Toast.makeText(getActivity(), "Username or password doesn't match", Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(Call<List<Users>> call, Throwable t) {
+                Toast.makeText(getActivity(), "Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        }
+
     }
     public Boolean validate(){
         boolean isValid=true;

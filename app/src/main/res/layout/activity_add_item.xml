@@ -26,8 +26,12 @@
         android:orientation="vertical"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp">
-
-
+        <ImageView
+            android:id="@+id/imgItem"
+            android:layout_width="100dp"
+            android:layout_gravity="center"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_image_black_24dp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -66,19 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="#f9d7db"            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Image Name"
-            android:textSize="25sp"
-            android:id="@+id/etItemImage"
-            android:background="@android:color/transparent"
-            android:drawablePadding="8dp"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
-            android:maxLines="1"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
+
 
             />
         <View
