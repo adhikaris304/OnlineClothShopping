@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.onlineclothshopping.DetailsActivity;
 import com.example.onlineclothshopping.R;
-import com.example.onlineclothshopping.model.Items;
+import com.example.onlineclothshopping.model.Clothes;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder> {
     Context mContext;
-    List<Items> itemsList;
+    List<Clothes> itemsList;
 
-    public ItemsAdapter(Context mContext, List<Items> itemsList){
+    public ItemsAdapter(Context mContext, List<Clothes> itemsList){
         this.mContext=mContext;
         this.itemsList=itemsList;
     }
@@ -37,7 +37,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ItemsViewHolder itemsViewHolder, final int i) {
-        final Items items=itemsList.get(i);
+        final Clothes items=itemsList.get(i);
         itemsViewHolder.imgItem.setImageResource(Integer.parseInt(items.getItemImage()));
 //        itemsViewHolder.tvItemName.setText(items.getItemName());
 //        itemsViewHolder.tvItemPrice.setText(items.getItemPrice());

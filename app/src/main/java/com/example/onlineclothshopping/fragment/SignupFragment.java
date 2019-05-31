@@ -9,15 +9,23 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.onlineclothshopping.R;
+import com.example.onlineclothshopping.api.ClothesApi;
+import com.example.onlineclothshopping.model.Users;
+import com.example.onlineclothshopping.url.Url;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignupFragment extends Fragment implements View.OnClickListener {
     private Button btnSignup;
-    private EditText etFname_Signup,etPassword_Signup,etConfPass, etLname_Signup, etUsername_Signup;
+    private EditText etFname_Signup,etPassword_Signup,etConfPass, etLname_Signup, etUsername_Signup, etConfirmPassword_Signup;
 
 
     public SignupFragment() {
@@ -45,27 +53,46 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         if(!validate()){
             return;
         }
-        Register();
+        addUsers();
 
     }
     private void Register() {
         String pass1 = etPassword_Signup.getText().toString();
         String pass2 = etConfPass.getText().toString();
 
-        //SharedPreferences sharedPreferences=get
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+
 
         if (pass1.equals(pass2)) {
-            editor.putString("username", etUsername_Signup.getText().toString());
-            editor.putString("password", etPassword_Signup.getText().toString());
-            editor.commit();
+
             Toast.makeText(getActivity(), "Sucessfully Registered", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(getActivity(), "Password Doesn't Match", Toast.LENGTH_SHORT).show();
 
         }
+    }
+    private void addUsers(){
+        ClothesApi clothesApi= Url.getInstance().create(ClothesApi.class);
+        String etFnameSignup=etFname_Signup.getText().toString();
+        String etLnameSignup=etLname_Signup.getText().toString();
+        String etUsernameSignup=etUsername_Signup.getText().toString();
+        String etPasswordSignup=etPassword_Signup.getText().toString();
+
+        Users users=new Users(etFnameSignup,etLnameSignup,etPasswordSignup, etUsernameSignup);
+
+        Call<Void> usersCall=clothesApi.addUsers(users);
+        usersCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(getActivity(), "User Added", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error"+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
     public Boolean validate(){
         boolean isValid=true;
@@ -85,4 +112,5 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         }
         return isValid;
     }
+
 }

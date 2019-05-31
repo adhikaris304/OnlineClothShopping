@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 
 import com.example.onlineclothshopping.adapter.ItemsAdapter;
-import com.example.onlineclothshopping.model.Items;
+import com.example.onlineclothshopping.model.Clothes;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -23,7 +21,7 @@ import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private List<Items> listItems;
+    private List<Clothes> listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class DashboardActivity extends AppCompatActivity {
             String line="";
             while ((line=br.readLine())!=null){
                 String[] parts=line.split("->");
-                Items items = new Items();
+                Clothes items = new Clothes();
                 items.setItemName(parts[0]);
                 items.setItemPrice(parts[1]);
 

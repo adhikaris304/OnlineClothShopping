@@ -1,17 +1,17 @@
 package com.example.onlineclothshopping.model;
 
-public class Items{
+public class Clothes {
     String itemName, itemPrice, itemDesc;
     String itemImage;
 
-    public Items(String itemName, String itemPrice, String itemDesc, String itemImage) {
+    public Clothes(String itemName, String itemPrice, String itemDesc, String itemImage) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemDesc = itemDesc;
         this.itemImage = itemImage;
     }
 
-    public Items() {
+    public Clothes() {
 
     }
 
