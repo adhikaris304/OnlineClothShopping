@@ -17,7 +17,7 @@ import com.example.onlineclothshopping.R;
 
 public class SignupFragment extends Fragment implements View.OnClickListener {
     private Button btnSignup;
-    private EditText etUsername_Signup,etPassword_Signup,etConfPass;
+    private EditText etFname_Signup,etPassword_Signup,etConfPass, etLname_Signup, etUsername_Signup;
 
 
     public SignupFragment() {
@@ -30,6 +30,8 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.activity_signup_fragment, container, false);
+        etFname_Signup=view.findViewById(R.id.etFname_Signup);
+        etLname_Signup=view.findViewById(R.id.etLname_Signup);
         etUsername_Signup=view.findViewById(R.id.etUsername_Signup);
         etPassword_Signup=view.findViewById(R.id.etPassword_Signup);
         etConfPass=view.findViewById(R.id.etConfirmPassword_Signup);

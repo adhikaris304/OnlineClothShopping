@@ -22,6 +22,27 @@
             android:layout_gravity="center_horizontal" />
 
 
+        <EditText android:id="@+id/etFname_Signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="First Name"
+            android:maxLines="1"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+
+        <EditText android:id="@+id/etLname_Signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="Last Name"
+            android:maxLines="1"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
         <EditText android:id="@+id/etUsername_Signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,9 +52,6 @@
             android:textColor="#ffffff"
             android:textSize="25sp"
             android:textStyle="bold"/>
-
-
-
 
 
         <EditText android:id="@+id/etPassword_Signup"
